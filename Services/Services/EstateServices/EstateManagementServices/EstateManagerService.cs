@@ -1,4 +1,5 @@
-﻿using Application.ServiceInterfaces.IEstateServices.IEstateManagementServices;
+﻿using Application.RepositoryInterfaces.IUserRepositories;
+using Application.ServiceInterfaces.IEstateServices.IEstateManagementServices;
 using Application.ServiceInterfaces.IEstateServices.IEstateOwnershipServices;
 using Application.ServiceInterfaces.IEstateServices.IEstateValidationServices;
 using Domain.Models;
@@ -17,13 +18,16 @@ namespace Application.Services.EstateServices.EstateManagementServices
         private readonly IUserEstateOwnershipService _userOwnershipService;
         private readonly ISharedEstateCrudService _sharedEstateCrudService;
         private readonly IEstateValidationService _estateValidationService;
+        private readonly IValidateUserOwnershipRepository _validateUserOwnershipRepository;
 
-        public EstateManagerService(IUserEstateCrudService userEstateCrudService, IUserEstateOwnershipService userOwnershipService, ISharedEstateCrudService sharedEstateCrudService, IEstateValidationService estateValidationService)
+        public EstateManagerService(IUserEstateCrudService userEstateCrudService, IUserEstateOwnershipService userOwnershipService, ISharedEstateCrudService sharedEstateCrudService, 
+            IEstateValidationService estateValidationService, IValidateUserOwnershipRepository validateUserOwnershipRepository)
         {
             _userEstateCrudService = userEstateCrudService;
             _userOwnershipService = userOwnershipService;
             _sharedEstateCrudService = sharedEstateCrudService;
             _estateValidationService = estateValidationService;
+            _validateUserOwnershipRepository = validateUserOwnershipRepository;
 
         }
 
@@ -40,8 +44,9 @@ namespace Application.Services.EstateServices.EstateManagementServices
             await _userOwnershipService.LinkUserToEstateAsync(userId, estateId, isPrimaryOwner: true);
         }
 
-        public async Task UpdateAndValidateEstateAsync(EquineEstate existingEstate, EquineEstate updatedEstate)
+        public async Task ValidateOwnershipAndUpdateEstateAsync(EquineEstate existingEstate, EquineEstate updatedEstate, Guid equineEstateId, Guid userId)
         {
+            await _validateUserOwnershipRepository.UserOwnsEstateAsync(equineEstateId, userId);
             var validatedEstate = await _estateValidationService.LoadAndValidateEstateAsync(existingEstate.EquineEstateId);
 
 

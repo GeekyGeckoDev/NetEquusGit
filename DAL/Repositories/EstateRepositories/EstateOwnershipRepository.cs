@@ -17,9 +17,32 @@ namespace DAL.Repositories.EstateRepositories
             _context = context;
         }
 
-        public async Task CreateOwnershipLinkAsync(EquineEstatesOwner ownershipLink)
+        public async Task CreateEstateOwnershipLinkAsync(EquineEstatesOwner ownershipLink)
         {
             await _context.EquineEstatesOwners.AddAsync(ownershipLink);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<EquineEstatesOwner?> GetEstsateOwnershipByIdAsync (Guid estateOwnershipId)
+        {
+            return await _context.EquineEstatesOwners.FindAsync(estateOwnershipId);
+        }
+
+        public async Task UpdateEstateOwnership(EquineEstatesOwner equineEstatesOwner)
+        {
+            _context.EquineEstatesOwners.Update(equineEstatesOwner);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteEstateOwnership (EquineEstatesOwner equineEstatesOwner)
+        {
+            _context.EquineEstatesOwners.Remove(equineEstatesOwner);
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task SaveChangesAsync()
+        {
             await _context.SaveChangesAsync();
         }
     }

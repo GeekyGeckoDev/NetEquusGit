@@ -10,5 +10,7 @@ namespace Application.ServiceInterfaces.IHorseServices.IHorseValidationServices
     public interface IHorseValidationService
     {
         Task<Horse> LoadAndValidateHorseAsync(Guid horseGuidId);
+
+        void ValidateHorseData(Horse horse, bool isFoaling);
     }
 }

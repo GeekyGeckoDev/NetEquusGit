@@ -1,29 +1,32 @@
-﻿using Application.Services.HorseServices.HorseCrudServices;
-using Application.Services.HorseServices.HorseValidationServices;
-using Application.Services.UserServices.UserValidationServices;
+﻿
 using Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using Application.Services.EstateServices.EstateValidationServices;
+using Application.ServiceInterfaces.IHorseServices.IHorseValidationServices;
+using Application.ServiceInterfaces.IHorseServices.IHorseCrudServices;
+using Application.ServiceInterfaces.IUserServices.IUserValidationServices;
+using Application.ServiceInterfaces.IEstateServices.IEstateValidationServices;
+using Application.ServiceInterfaces.IHorseServices;
+using Application.ServiceInterfaces.ICombinedValidationService;
+
+
+
 
 namespace Application.Services.HorseServices.HorseManagementService
 {
     public class HorseManagerService
     {
-        private readonly HorseValidationService _horseValidationService;
-        private readonly SharedHorseCrudService _sharedHorseCrudService;
-        private readonly UserValidationService _userValidationService;
-        private readonly EstateValidationService _estateValidationService;
-        private readonly AdminHorseCrudService _adminHorseCrudService;
-        private readonly HorseAssignmentManagerService _horseAssignmentManagerService;
+        private readonly IHorseValidationService _horseValidationService;
+        private readonly ISharedHorseCrudService _sharedHorseCrudService;
+        private readonly IUserValidationService _userValidationService;
+        private readonly IEstateValidationService _estateValidationService;
+        private readonly IAdminHorseCrudService _adminHorseCrudService;
+        private readonly IHorseAssignmentManagerService _horseAssignmentManagerService;
+        private readonly IHorseOwnershipValidationService _horseValidationOwnershipService;
+        private readonly IUserHorseCrudService _userHorseCrudService;
         
 
-        public HorseManagerService(HorseValidationService horseValidationService, SharedHorseCrudService sharedHorseCrudService, UserValidationService userValidationService,
-            EstateValidationService estateValidationService, AdminHorseCrudService adminHorseCrudService, HorseAssignmentManagerService horseAssignmentManagerService)
+        public HorseManagerService(IHorseValidationService horseValidationService, ISharedHorseCrudService sharedHorseCrudService, IUserValidationService userValidationService,
+            IEstateValidationService estateValidationService, IAdminHorseCrudService adminHorseCrudService, IHorseAssignmentManagerService horseAssignmentManagerService, 
+            IHorseOwnershipValidationService horseValidationOwnershipService, IUserHorseCrudService userHorseCrudService)
         {
             _horseValidationService = horseValidationService;
             _sharedHorseCrudService = sharedHorseCrudService;
@@ -31,6 +34,8 @@ namespace Application.Services.HorseServices.HorseManagementService
             _estateValidationService = estateValidationService;
             _adminHorseCrudService = adminHorseCrudService;
             _horseAssignmentManagerService = horseAssignmentManagerService;
+            _horseValidationOwnershipService = horseValidationOwnershipService;
+            _userHorseCrudService = userHorseCrudService;   
         }
 
 
@@ -38,7 +43,7 @@ namespace Application.Services.HorseServices.HorseManagementService
         public async Task UpdateAndValidateHorseAsync (Guid horseGuidId, Horse updatedHorse)
         {
             var existingHorse = await _horseValidationService.LoadAndValidateHorseAsync(horseGuidId);
-            await _sharedHorseCrudService.UpdateHorseAsync(existingHorse, updatedHorse);    
+            await _sharedHorseCrudService.UpdateHorseAsync(existingHorse, updatedHorse);
         }
 
         public async Task<Guid>CreateValidateAssignHorseAsync(Horse horse, Guid userId, Guid estateId, bool isFoaling, bool isPermanentResidence)
@@ -55,6 +60,18 @@ namespace Application.Services.HorseServices.HorseManagementService
 
             return guidHorseId;
 
+        }
+
+        public async Task ValidateOwnershipAndUpdateHorse (Horse existinghorse, Horse updatedHorse, Guid horseGuidId, Guid userId)
+        {
+            
+            await _horseValidationService.LoadAndValidateHorseAsync (horseGuidId);
+
+            await _userValidationService.LoadAndValidateUserAsync(userId);
+
+            await _horseValidationOwnershipService.ValidateUserOwnsHorseAsync(userId, horseGuidId);
+
+            await _userHorseCrudService.UpdateHorseAsync(existinghorse,updatedHorse );
         }
     }
 }

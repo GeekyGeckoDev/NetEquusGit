@@ -9,6 +9,14 @@ namespace Application.RepositoryInterfaces.IEstateRepositories
 {
     public interface IEstateOwnershipRepository
     {
-        Task CreateOwnershipLinkAsync(EquineEstatesOwner ownershipLink);
+        Task CreateEstateOwnershipLinkAsync(EquineEstatesOwner ownershipLink);
+
+        Task<EquineEstatesOwner?> GetEstsateOwnershipByIdAsync(Guid estateOwnershipId);
+
+        Task UpdateEstateOwnership(EquineEstatesOwner equineEstatesOwner);
+
+        Task DeleteEstateOwnership(EquineEstatesOwner equineEstatesOwner);
+
+
     }
 }

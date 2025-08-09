@@ -9,7 +9,7 @@ namespace Application.ServiceInterfaces.IHorseServices.IHorseOwnershipServices
 {
     public interface IHorseOwnershipCrudService
     {
-
+        Task CreateHorseOwnershipLinkAsync(Guid userId, Guid guidHorseId);
         Task<HorseOwnership?> GetHorseOwnershipByIdAsync(Guid horseOwnershipId);
 
 

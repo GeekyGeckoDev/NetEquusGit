@@ -31,7 +31,7 @@ namespace Application.Services.EstateServices.EstateOwnershipServices
                 IsPrimaryOwner = true
             };
 
-            await _estateOwnershipRepository.CreateOwnershipLinkAsync (ownership);
+            await _estateOwnershipRepository.CreateEstateOwnershipLinkAsync (ownership);
         }
     }
 }

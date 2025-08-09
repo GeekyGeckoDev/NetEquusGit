@@ -7,20 +7,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.ServiceInterfaces.IHorseServices.IHorseValidationServices;
+using Application.ServiceInterfaces.IHorseServices.IHorseOwnershipServices;
+using Application.ServiceInterfaces.IHorseServices.IHorseBoardingService;
 
 namespace Application.Services.HorseServices.HorseManagementService
 {
     public class HorseAssignmentManagerService
     {
-        private readonly HorseValidationService _horseValidationService;
-        private readonly HorseOwnershipCrudService _horseOwnershipCrudService;
-        private readonly HorseBoardingCrudService _horseBoardingCrudService;
+   
+        private readonly IHorseOwnershipCrudService _horseOwnershipCrudService;
+        private readonly IHorseBoardingCrudService _horseBoardingCrudService;
         private readonly ISystemAccountProvider _systemAccountProvider;
     
 
-        public HorseAssignmentManagerService(HorseValidationService horseValidationService, HorseOwnershipCrudService horseOwnershipCrudService, HorseBoardingCrudService horseBoardingCrudService, ISystemAccountProvider systemAccountProvider)
+        public HorseAssignmentManagerService(IHorseOwnershipCrudService horseOwnershipCrudService, IHorseBoardingCrudService horseBoardingCrudService, ISystemAccountProvider systemAccountProvider)
         {
-            _horseValidationService = horseValidationService;
             _horseOwnershipCrudService = horseOwnershipCrudService;
             _horseBoardingCrudService = horseBoardingCrudService;
             _systemAccountProvider = systemAccountProvider;

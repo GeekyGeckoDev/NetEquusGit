@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.ServiceInterfaces.IHorseServices.IHorseCrudServices
+namespace Application.ServiceInterfaces.ICombinedValidationService
 {
-    public interface IUserHorseCrudService
+    public interface IEstateOwnershipValidationService
     {
+
     }
 }

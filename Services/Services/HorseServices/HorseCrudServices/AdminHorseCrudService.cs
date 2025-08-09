@@ -1,6 +1,6 @@
 ﻿using Application.RepositoryInterfaces;
 using Application.RepositoryInterfaces.IHorseRepositories;
-using Application.ServiceInterfaces.IHorseServices.UHorseCrudServices;
+using Application.ServiceInterfaces.IHorseServices.IHorseCrudServices;
 using Application.ServiceInterfaces.IUserServices.IUserManagementServices;
 using Domain.Models;
 using System;
