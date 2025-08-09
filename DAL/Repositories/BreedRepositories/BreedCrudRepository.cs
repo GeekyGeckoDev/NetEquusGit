@@ -24,7 +24,7 @@ namespace Infrastructure.Repositories.BreedRepositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Breed?> GetBreedByIdAsync (int breedId)
+        public async Task<Breed> GetBreedByIdAsync (int breedId)
         {
             return await _context.Breeds.FindAsync(breedId);
            
@@ -41,6 +41,10 @@ namespace Infrastructure.Repositories.BreedRepositories
         {
              _context.Breeds.Remove(breed);
 
+            await _context.SaveChangesAsync();
+        }
+        public async Task SaveChangesAsync()
+        {
             await _context.SaveChangesAsync();
         }
     }
