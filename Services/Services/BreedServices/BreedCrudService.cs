@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Models.Horses.Breeds;
 using Domain.Models;
-using Application.RepositoryInterfaces.IHorseRepositories;
+using Application.RepositoryInterfaces.IHorseRelatedRepositories;
 
 namespace Application.Services.BreedServices
 {
@@ -41,6 +41,7 @@ namespace Application.Services.BreedServices
         public async Task DeleteBreedAsync (Breed breed)
         {
             await _breedCrudRepository.DeleteBreedAsync (breed);
+            await _breedCrudRepository.SaveChangesAsync();
         }
     }
 }

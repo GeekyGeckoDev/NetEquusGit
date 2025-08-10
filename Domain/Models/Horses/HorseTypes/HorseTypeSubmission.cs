@@ -16,15 +16,15 @@ public class HorseTypeSubmission
     public int HorseTypeSubmissionID { get; private set; }
 
     [Required]
-    public int SubmittedByUserId { get; set; } // Reference to user who submitted
+    public Guid SubmittedByUserId { get; set; } // Reference to user who submitted
 
-    public User SubmittedByUser { get; set; }
+    public virtual User SubmittedByUser { get; set; }
 
     public int MaturityStage { get; set; }
 
 
     [ForeignKey("Breed"), Required]
-    public int BreedID { get; private set; }
+    public int BreedID { get; set; }
 
     public Breed Breed { get; private set; }
 
@@ -45,7 +45,7 @@ public class HorseTypeSubmission
     public bool IsHorse { get; private set; } // Not sure what else this would be?
 
     [Required]
-    public string PictureRef { get; private set; }
+    public string PictureRef { get; set; }
 
     public virtual ICollection<HorseTypeSubmissionArtist> HorseTypeSubmissionArtists { get; set; } = new List<HorseTypeSubmissionArtist>();
 }

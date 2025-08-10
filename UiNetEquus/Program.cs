@@ -4,10 +4,10 @@ using DAL;
 using Domain.Models;
 using Application.ServiceInterfaces;
 using Application.Services;
-using Application.ServiceInterfaces.IUserServices.IUserManagementServices;
-using Application.Services.UserServices.UserManagementServices;
 using Application.RepositoryInterfaces;
-using DAL.Repositories.UserRepositories;
+using Infrastructure.Repositories.UserRelatedRepositories.UserRepositories;
+using Application.Services.UserRelatedServices.UserServices.UserCrudServices;
+using Application.ServiceInterfaces.IUserRelatedServices.IUserServices.IUserCrudServices;
 
 
 var builder = WebApplication.CreateBuilder(args);

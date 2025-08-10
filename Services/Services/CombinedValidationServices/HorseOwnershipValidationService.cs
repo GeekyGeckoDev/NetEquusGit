@@ -1,8 +1,7 @@
 ﻿using Application.RepositoryInterfaces.IUserRepositories;
 using Application.ServiceInterfaces.ICombinedValidationService;
 using Application.ServiceInterfaces.IHorseServices.IHorseValidationServices;
-using Application.ServiceInterfaces.IUserServices.IUserValidationServices;
-
+using Application.ServiceInterfaces.IUserRelatedServices.IUserServices.IUserValidationServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
