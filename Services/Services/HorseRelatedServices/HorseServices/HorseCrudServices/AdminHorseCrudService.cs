@@ -1,13 +1,7 @@
 ﻿using Application.RepositoryInterfaces;
 using Application.RepositoryInterfaces.IHorseRelatedRepositories.IHorseRepository;
 using Application.ServiceInterfaces.IHorseServices.IHorseCrudServices;
-using Application.ServiceInterfaces.IUserServices.IUserManagementServices;
 using Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Services.HorseRelatedServices.HorseServices.HorseCrudServices
 {
@@ -39,7 +33,7 @@ namespace Application.Services.HorseRelatedServices.HorseServices.HorseCrudServi
             //The shit that admin can edit on a horse
             existingHorse.HorseName = updatedHorse.HorseName;
 
-            _horseCrudRepository.UpdateHorseAsync(existingHorse);
+            await _horseCrudRepository.UpdateHorseAsync(existingHorse);
             await _horseCrudRepository.SaveChangesAsync ();
         }
     }

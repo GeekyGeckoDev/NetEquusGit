@@ -6,6 +6,7 @@ using Application.ServiceInterfaces.IEstateServices.IEstateValidationServices;
 using Application.ServiceInterfaces.ICombinedValidationService;
 using Application.ServiceInterfaces.IHorseServices.IHorseManagementServices;
 using Application.ServiceInterfaces.IUserRelatedServices.IUserServices.IUserValidationServices;
+using Application.ServiceInterfaces.IArtworkRelatedServices.IHorseTypeServices;
 
 
 
@@ -22,11 +23,12 @@ namespace Application.Services.HorseRelatedServices.HorseServices.HorseManagemen
         private readonly IHorseAssignmentManagerService _horseAssignmentManagerService;
         private readonly IHorseOwnershipValidationService _horseValidationOwnershipService;
         private readonly IUserHorseCrudService _userHorseCrudService;
+        private readonly IHorseTypeValidationService _horseTypeValidationService;
         
 
         public HorseManagerService(IHorseValidationService horseValidationService, ISharedHorseCrudService sharedHorseCrudService, IUserValidationService userValidationService,
             IEstateValidationService estateValidationService, IAdminHorseCrudService adminHorseCrudService, IHorseAssignmentManagerService horseAssignmentManagerService, 
-            IHorseOwnershipValidationService horseValidationOwnershipService, IUserHorseCrudService userHorseCrudService)
+            IHorseOwnershipValidationService horseValidationOwnershipService, IUserHorseCrudService userHorseCrudService, IHorseTypeValidationService horseTypeValidationService)
         {
             _horseValidationService = horseValidationService;
             _sharedHorseCrudService = sharedHorseCrudService;
@@ -35,7 +37,8 @@ namespace Application.Services.HorseRelatedServices.HorseServices.HorseManagemen
             _adminHorseCrudService = adminHorseCrudService;
             _horseAssignmentManagerService = horseAssignmentManagerService;
             _horseValidationOwnershipService = horseValidationOwnershipService;
-            _userHorseCrudService = userHorseCrudService;   
+            _userHorseCrudService = userHorseCrudService;
+            _horseTypeValidationService = horseTypeValidationService;
         }
 
 
@@ -46,8 +49,11 @@ namespace Application.Services.HorseRelatedServices.HorseServices.HorseManagemen
             await _sharedHorseCrudService.UpdateHorseAsync(existingHorse, updatedHorse);
         }
 
-        public async Task<Guid>CreateValidateAssignHorseAsync(Horse horse, Guid userId, Guid estateId, bool isFoaling, bool isPermanentResidence)
+        public async Task<Guid>CreateValidateAssignHorseAsync(Horse horse, Guid userId, Guid estateId, bool isFoaling, bool isPermanentResidence, int horseTypeId)
+
         {
+            _horseTypeValidationService.ValidateAndLoadHorseTypeAsync(horseTypeId);
+
              _horseValidationService.ValidateHorseData(horse, isFoaling);
             
             await _userValidationService.LoadAndValidateUserAsync(userId); 

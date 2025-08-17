@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Application.RepositoryInterfaces;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories.BreedRepositories
 {
-    public class BreedCrudRepository
+    public class BreedCrudRepository : IBreedCrudRepository
     {
         private readonly NetEquusDbContext _context;
 
@@ -16,15 +17,15 @@ namespace Infrastructure.Repositories.BreedRepositories
         {
             _context = context;
         }
-
+        
         public async Task CreateBreedAsync (Breed breed)
         {
             await _context.Breeds.AddAsync(breed);
 
             await _context.SaveChangesAsync();
         }
-
-        public async Task<Breed> GetBreedByIdAsync (int breedId)
+        
+        public async Task<Breed?> GetBreedByIdAsync (int breedId)
         {
             return await _context.Breeds.FindAsync(breedId);
            
@@ -32,11 +33,11 @@ namespace Infrastructure.Repositories.BreedRepositories
 
         public async Task UpdateBreedAsync (Breed breed)
         {
-            await _context.Breeds.AddAsync (breed);
+            _context.Breeds.Update(breed);
 
             await _context.SaveChangesAsync();
         }
-
+      
         public async Task DeleteBreedAsync (Breed breed)
         {
              _context.Breeds.Remove(breed);

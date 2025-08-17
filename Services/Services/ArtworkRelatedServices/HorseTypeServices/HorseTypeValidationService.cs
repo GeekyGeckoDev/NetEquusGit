@@ -21,7 +21,7 @@ namespace Application.Services.ArtworkRelatedServices.HorseTypeServices
             _horseTypeCrudRepository = horseTypeCrudRepository;
         }
 
-        public async Task<HorseType> ValidateAndLoadHorseType(int horseTypeId)
+        public async Task<HorseType> ValidateAndLoadHorseTypeAsync(int horseTypeId)
         {
             var horseType = await _horseTypeCrudRepository.GetHorseTypeByIdAsync(horseTypeId);
             if (horseType == null) throw new ValidationException("HorseType not found");

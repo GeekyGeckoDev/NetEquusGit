@@ -9,6 +9,6 @@ namespace Application.ServiceInterfaces.IArtworkRelatedServices.IHorseTypeServic
 {
     public interface IHorseTypeValidationService
     {
-        Task<HorseType> ValidateAndLoadHorseType(int horseTypeId);
+        Task<HorseType> ValidateAndLoadHorseTypeAsync(int horseTypeId);
     }
 }

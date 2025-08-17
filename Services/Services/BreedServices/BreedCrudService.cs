@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using Domain.Models.Horses.Breeds;
 using Domain.Models;
 using Application.RepositoryInterfaces.IHorseRelatedRepositories;
+using Application.ServiceInterfaces.IBreedServices;
 
 namespace Application.Services.BreedServices
 {
-    public  class BreedCrudService
+    public  class BreedCrudService : IBreedCrudService
     {
         private readonly IBreedCrudRepository _breedCrudRepository;
 

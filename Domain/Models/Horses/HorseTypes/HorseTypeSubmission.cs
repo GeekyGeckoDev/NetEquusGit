@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Domain.Models.Enums;
+using Domain.Models.Horses.HorseTypes;
 
 namespace Domain.Models;
 
@@ -44,8 +45,9 @@ public class HorseTypeSubmission
     [Required]
     public bool IsHorse { get; private set; } // Not sure what else this would be?
 
-    [Required]
-    public string PictureRef { get; set; }
+    public int HorsePictureId { get; set; };
+
+    public virtual HorsePicture HorsePicture { get; set; }
 
     public virtual ICollection<HorseTypeSubmissionArtist> HorseTypeSubmissionArtists { get; set; } = new List<HorseTypeSubmissionArtist>();
 }

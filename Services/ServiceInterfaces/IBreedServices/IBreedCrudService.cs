@@ -13,10 +13,8 @@ namespace Application.ServiceInterfaces.IBreedServices
 
         Task<Breed> GetBreedByIdAsync(int breedId);
 
-        Task UpdateBreedAsync(Breed breed);
+        Task UpdateBreedAsync(Breed existingBreed, Breed updatedBreed);
 
         Task DeleteBreedAsync(Breed breed);
-
-        Task SaveChangesAsync();
     }
 }

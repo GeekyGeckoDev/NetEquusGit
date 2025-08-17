@@ -42,14 +42,14 @@ namespace Application.Services.ArtworkRelatedServices.HorseTypeServices
 
         public async Task<HorseType?> GetAndValidateHorseTypeByIdAsync (int horseTypeId)
         {
-            await _horseTypeValidationService.ValidateAndLoadHorseType(horseTypeId);
+            await _horseTypeValidationService.ValidateAndLoadHorseTypeAsync(horseTypeId);
 
             return await _horseTypeCrudService.GetHorseTypeByIdAsync(horseTypeId);
         }
 
         public async Task UpdateAndValidateHorseTypeAsync (int horseTypeId, HorseType existingHorseType, HorseType updatedHorseType)
         {
-            await _horseTypeValidationService.ValidateAndLoadHorseType(horseTypeId);
+            await _horseTypeValidationService.ValidateAndLoadHorseTypeAsync(horseTypeId);
 
             await _horseTypeCrudService.UpdateHorseTypeAsync(existingHorseType, updatedHorseType);
 
@@ -57,7 +57,7 @@ namespace Application.Services.ArtworkRelatedServices.HorseTypeServices
 
         public async Task DeleteAndValidateHorseTypeAsync (HorseType horseType, int horseTypeId)
         {
-            await _horseTypeValidationService.ValidateAndLoadHorseType(horseTypeId);
+            await _horseTypeValidationService.ValidateAndLoadHorseTypeAsync(horseTypeId);
             await _horseTypeCrudService.DeleteHorseTypeAsync(horseType);
 
         }
