@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Models;
@@ -19,6 +20,8 @@ public  class HorseType
     public int BreedId { get; set; }
 
     public int TypeCategory { get; set; }
+
+    public HorseGender HorseGender { get; set; } 
 
     public int TypeHorsesAlive { get; set; }
 

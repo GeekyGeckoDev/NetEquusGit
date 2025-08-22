@@ -16,26 +16,25 @@ public  class Foaling
 
     public Guid EquineEstateId { get; set; }
 
-    public Guid DamId { get; set; }
+    public DateOnly CoveringDate { get; set; }
 
-    public Guid SireId { get; set; }
-
-    public Guid FoalId { get; set; }
-
-    public DateTime FoalingDate { get; set; }
+    public DateOnly FoalingDate { get; set; }
 
     [Column(TypeName = "decimal(18, 2)")]
     public decimal EstimatedValueIncrease { get; set; }
 
-    [ForeignKey("DamId")]
-    public virtual Horse Dam { get; set; }
-
     [ForeignKey("EquineEstateId")]
     public virtual EquineEstate EquineEstate { get; set; }
 
-    [ForeignKey("FoalId")]
-    public virtual Horse Foal { get; set; }
+    // Link to foal
+    public Guid FoalId { get; set; }
+    public Horse Foal { get; set; }
 
-    [ForeignKey("SireId")]
-    public virtual Horse Sire { get; set; }
+    // Link to parents (redundant but useful for querying events by parent)
+    public Guid DamId { get; set; }
+    public Horse Dam { get; set; }
+
+    public Guid SireId { get; set; }
+    public Horse Sire { get; set; }
+
 }

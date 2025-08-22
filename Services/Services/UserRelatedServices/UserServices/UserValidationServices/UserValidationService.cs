@@ -22,11 +22,6 @@ namespace Application.Services.UserRelatedServices.UserServices.UserValidationSe
             if (user == null) throw new ValidationException ("User not found");
             return user;
         }
-
-        public async Task ValidateUserIsHorseArtist (Guid userId)
-        {
-
-        }
     }
 }
 

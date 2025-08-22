@@ -19,5 +19,7 @@ namespace Application.RepositoryInterfaces
         Task DeleteUserAsync(User user);
 
         Task SaveChangesAsync();
+
+
     }
 }

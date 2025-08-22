@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Models.Enums;
 using Domain.Models.Horses.Breeds;
+using Domain.Models.Horses.HorseStats;
 using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Models;
@@ -17,6 +18,8 @@ public class Breed
 
     [Required]
     public string BreedName { get; set; }
+
+    public string RegistryInitials { get; set; }
 
     public int MinHeight { get; set; }
 
@@ -50,6 +53,21 @@ public class Breed
     [ForeignKey("BreedGroupId")]
 
     public virtual BreedGroup BreedGroup { get; set; }
+
+    public PerformanceAttributes MinPerformance { get; set; }
+
+    public PerformanceAttributes MaxPerformance { get; set; }
+
+    public PerformanceWeight PerformanceWeight { get; set; }
+
+    public ConformationAttributes MaxConformation { get; set; }
+
+    public ConformationAttributes MinConformation { get; set; }
+
+    public ConformationWeight ConformationWeight { get; set; }
+
+
+    public TemperamentInformation TemperamentInformation { get; set; }
 
 
     public virtual ICollection<FoundationPair> FoundationPairParentBreedDams { get; set; } = new List<FoundationPair>();

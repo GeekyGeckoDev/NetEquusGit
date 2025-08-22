@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Models;
 
-public  class Horse
+public partial class Horse
 {
     [Key]
     public Guid GuidHorseId { get; set; }
@@ -27,7 +27,7 @@ public  class Horse
 
     public int Age { get; set; }
 
-    public int Sex { get; set; }
+    public HorseGender HorseGender { get; set; }
 
     public DateOnly BirthDate { get; set; }
 
@@ -35,9 +35,11 @@ public  class Horse
 
     public int Temperament { get; set; }
 
+    public int HorseHeight { get; set; }
+
     public int HorseTypeId { get; set; }
 
-    public int HorsePurposeType { get; set; }
+    public HorsePurposeStat HorsePurposeStat { get; set; }
 
     public double Value { get; set; }
 
@@ -57,15 +59,17 @@ public  class Horse
     public int? LegacyHorseId { get; set; }
 
     public ICollection<CompetitionProgression> CompetitionProgressions { get; set; }
+    // Parentage
+    public Guid? SireId { get; set; }
+    public Horse? Sire { get; set; }
 
+    public Guid? DamId { get; set; }
+    public Horse? Dam { get; set; }
 
+    // Navigation - foals this horse produced
+    public ICollection<Horse> OffspringAsSire { get; set; } = new List<Horse>();
+    public ICollection<Horse> OffspringAsDam { get; set; } = new List<Horse>();
     public virtual ICollection<CompetitionResult> CompetitionResults { get; set; } = new List<CompetitionResult>();
-
-    public virtual ICollection<Foaling> FoalingDams { get; set; } = new List<Foaling>();
-
-    public virtual Foaling Foaling { get; set; }
-
-    public virtual ICollection<Foaling> FoalingSires { get; set; } = new List<Foaling>();
 
     public CompetitionProgression Progression { get; set; }
     public virtual ConfPerfTempAttributes ConfPerfTempAttributes { get; set; }
@@ -90,5 +94,25 @@ public  class Horse
     public virtual ICollection<HorseOwnership> HorseOwnerList { get; set; } = new List<HorseOwnership>();
 
     public virtual ICollection<HorseBoarding> HorseBoardings { get; set; } = new List<HorseBoarding>();
+
+    public Horse (string name, Breed breed, HorseGender gender, HorseType horseType)
+    {
+        GuidHorseId = Guid.NewGuid ();
+        HorseName = "Unamed";
+        HorseGender = HorseType.HorseGender;
+        BirthDate = DateOnly.FromDateTime(DateTime.Now);
+
+    }
+
+    public Horse(string name, Breed breed, Foaling foaling)
+    {
+        GuidHorseId = Guid.NewGuid ();
+        HorseName = "Unamed";
+        BirthDate = Foaling.FoalingDate;
+    }
+
+    public Horse()
+    {
+    }
 
 }

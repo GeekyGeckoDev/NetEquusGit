@@ -1,4 +1,4 @@
-﻿using Application.RepositoryInterfaces;
+﻿using Application.RepositoryInterfaces.IBreedRepositories;
 using Domain.Models;
 using System;
 using System.Collections.Generic;

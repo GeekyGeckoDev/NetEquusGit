@@ -54,7 +54,7 @@ namespace Application.Services.PictureStorageServices
             await _s3.DeleteObjectAsync(new DeleteObjectRequest { BucketName = _bucket, Key = key }, ct);
         }
 
-        public Task<Uri> GeneratePresignedUrlAsync(string objectKey, TimeSpan expiry, bool forUpload = false)
+        public Task<Uri> GeneratedPredesignedUrlAsync(string objectKey, TimeSpan expiry, bool forUpload = false)
         {
             var request = new GetPreSignedUrlRequest
             {

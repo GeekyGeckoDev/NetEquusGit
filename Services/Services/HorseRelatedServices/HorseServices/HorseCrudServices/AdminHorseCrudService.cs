@@ -17,10 +17,18 @@ namespace Application.Services.HorseRelatedServices.HorseServices.HorseCrudServi
 
         public async Task<Guid> CreateHorseAsync (Horse horse)
         {
+            var newHorse = new Horse
+            {
+                GuidHorseId = Guid.NewGuid(),
+                HorseRegistryId = "blob" //Make method for generating Id's),
+
+
+
+            };
             await _horseCrudRepository.CreateHorseAsync (horse);
             await _horseCrudRepository.SaveChangesAsync();
 
-            return horse.GuidHorseId;
+            return newHorse.GuidHorseId;
         }
 
         public async Task DeleteHorseAsync(Horse horse)

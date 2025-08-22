@@ -1,5 +1,4 @@
-﻿using Application.RepositoryInterfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +7,7 @@ using Domain.Models.Horses.Breeds;
 using Domain.Models;
 using Application.RepositoryInterfaces.IHorseRelatedRepositories;
 using Application.ServiceInterfaces.IBreedServices;
+using Application.RepositoryInterfaces.IBreedRepositories;
 
 namespace Application.Services.BreedServices
 {

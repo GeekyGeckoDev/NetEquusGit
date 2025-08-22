@@ -1,5 +1,4 @@
-﻿using Application.RepositoryInterfaces;
-using Domain.Models;
+﻿using Domain.Models;
 using Application.ServiceInterfaces;
 using System.ComponentModel;
 using System;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Application.RepositoryInterfaces.IBreedRepositories;
 
 namespace Application.Services.BreedServices
 {

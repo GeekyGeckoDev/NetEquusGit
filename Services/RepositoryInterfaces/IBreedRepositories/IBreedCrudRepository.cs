@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.RepositoryInterfaces
+namespace Application.RepositoryInterfaces.IBreedRepositories
 {
     public  interface IBreedCrudRepository
     {

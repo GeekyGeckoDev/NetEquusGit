@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,7 @@ namespace Domain.Models.Horses.HorseStats
 
         public double Stride { get; set; }
 
-        public double Rideability { get; set; }
+        public double Trainability { get; set; }
 
-        public string Temperament { get; set; }
     }
 }

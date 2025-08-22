@@ -69,6 +69,8 @@ public class NetEquusDbContext : DbContext
 
     public virtual DbSet<HorseTrophy> HorseTrophies { get; set; }
 
+    public virtual DbSet<LastBreedRegistry> LastBreedRegistries { get; set; }
+
 
     #region[DbSet Breeds]
 
