@@ -25,7 +25,7 @@ public partial class Horse
     [Required]
     public string HorseName { get; set; }
 
-    public int Age { get; set; }
+    public double Age { get; set; }
 
     public HorseGender HorseGender { get; set; }
 
@@ -34,6 +34,7 @@ public partial class Horse
     public DateOnly AgingDate { get; set; }
 
     public int Temperament { get; set; }
+    public ICollection<Breed> Breeds { get; set; } = new List<Breed>();
 
     public int HorseHeight { get; set; }
 
@@ -50,13 +51,11 @@ public partial class Horse
 
     public bool IsInPasture { get; set; }
 
+    public bool InFoal { get; set; }
+
     public bool IsFoal { get; set; }
 
-    public bool IsVaulted { get; set; }
-
     public bool IsShared { get; set; }
-
-    public int? LegacyHorseId { get; set; }
 
     public ICollection<CompetitionProgression> CompetitionProgressions { get; set; }
     // Parentage
@@ -66,9 +65,6 @@ public partial class Horse
     public Guid? DamId { get; set; }
     public Horse? Dam { get; set; }
 
-    // Navigation - foals this horse produced
-    public ICollection<Horse> OffspringAsSire { get; set; } = new List<Horse>();
-    public ICollection<Horse> OffspringAsDam { get; set; } = new List<Horse>();
     public virtual ICollection<CompetitionResult> CompetitionResults { get; set; } = new List<CompetitionResult>();
 
     public CompetitionProgression Progression { get; set; }
@@ -108,7 +104,7 @@ public partial class Horse
     {
         GuidHorseId = Guid.NewGuid ();
         HorseName = "Unamed";
-        BirthDate = Foaling.FoalingDate;
+        BirthDate = foaling.FoalingDate;
     }
 
     public Horse()

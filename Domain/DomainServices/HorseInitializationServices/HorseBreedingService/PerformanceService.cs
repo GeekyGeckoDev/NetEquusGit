@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.DomainServices.HorseBreedingService
+namespace Domain.DomainServices.HorseInitializationServices.HorseBreedingService
 {
     public class PerformanceService
     {
@@ -22,11 +22,15 @@ namespace Domain.DomainServices.HorseBreedingService
     
         
         public PerformanceAttributes GeneratePerformanceFromParentsStats(
-             PerformanceAttributes dam,
-             PerformanceAttributes sire,
-             PurposeType purposeType, PerformanceWeight breedWeights)
+             Horse damHorse,
+             Horse sireHorse,
+             PurposeType DampurposeType, PerformanceWeight breedWeights)
         {
-            var damInheritance = _determineDamInheritance.GenerateDamInheritance(purposeType);
+
+            var damInheritance = _determineDamInheritance.GenerateDamInheritance(DampurposeType, damHorse);
+
+            var dam = damHorse.ConfPerfTempAttributes.PerformanceAttributes;
+            var sire = sireHorse.ConfPerfTempAttributes.PerformanceAttributes;
 
             var foal = new PerformanceAttributes();
 

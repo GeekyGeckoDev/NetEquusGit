@@ -16,6 +16,8 @@ public  class Foaling
 
     public Guid EquineEstateId { get; set; }
 
+    public int FoalingCooldown { get; set; } = 5;
+
     public DateOnly CoveringDate { get; set; }
 
     public DateOnly FoalingDate { get; set; }

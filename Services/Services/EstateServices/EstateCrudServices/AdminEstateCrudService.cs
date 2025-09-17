@@ -1,7 +1,6 @@
 ﻿using Application.RepositoryInterfaces;
 using Application.RepositoryInterfaces.IEstateRepositories;
 using Application.ServiceInterfaces.IEstateServices.IEstateManagementServices;
-using Application.Services.UserServices.UserManagementServices;
 using Domain.Models;
 using System;
 using System.Collections.Generic;

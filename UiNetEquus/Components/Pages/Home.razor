@@ -5,3 +5,44 @@
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+    <div class="row">
+        <div class="col">
+        <div class="sideboxes">
+
+            <p>Works </p>
+        </div>
+
+        </div>
+        <div class="col">
+        <div class="registerbox">
+
+            <p>Works </p>
+        </div>
+
+        </div>
+        <div class="col">
+        <div class="sideboxes">
+
+            <p>Works </p>
+        </div>
+
+        </div>
+    </div>
+
+
+
+<h3>Test Button</h3>
+
+<button @onclick="OnClick">Click me</button>
+
+<p>@message</p>
+
+@code {
+    private string message = "";
+
+    private void OnClick()
+    {
+        message = "Button clicked!";
+    }
+}

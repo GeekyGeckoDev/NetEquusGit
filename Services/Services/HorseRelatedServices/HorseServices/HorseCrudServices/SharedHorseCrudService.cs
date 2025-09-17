@@ -1,7 +1,6 @@
 ﻿using Application.RepositoryInterfaces;
 using Application.RepositoryInterfaces.IHorseRelatedRepositories.IHorseRepository;
 using Application.ServiceInterfaces.IHorseServices.IHorseCrudServices;
-using Application.ServiceInterfaces.IUserServices.IUserManagementServices;
 using Domain.Models;
 using System;
 using System.Collections.Generic;

@@ -6,14 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.DomainServices.HorseBreedingService
+namespace Domain.DomainServices.HorseInitializationServices.HorseBreedingService
 {
     public class DetermineDamInheritance
     {
 
 
-        public HorsePurposeStat GenerateDamInheritance(PurposeType damPurposeType)
+        public HorsePurposeStat GenerateDamInheritance(PurposeType damPurposeType, Horse damhorse)
         {
+
+            damPurposeType = damhorse.HorsePurposeStat.PurposeType;
+
+
             switch (damPurposeType)
             {
                 case PurposeType.Breeding:

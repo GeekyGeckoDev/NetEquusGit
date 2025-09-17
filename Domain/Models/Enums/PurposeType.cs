@@ -8,8 +8,8 @@ namespace Domain.Models.Enums
 {
     public enum PurposeType
     {
-        Breeding,
-        Competition,
-        Mixed
+        Competition = 0,
+        Breeding = 1,
+        Mixed = 2
     }
 }

@@ -1,4 +1,5 @@
-﻿using Domain.Models.Horses.Breeds;
+﻿using Domain.Models;
+using Domain.Models.Horses.Breeds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,11 @@ namespace Domain.DomainServices.HorseInitializationServices.Shared
             lastBreedRegistry = _lastBreedRegistry;
         }
 
-        public static string GenerateHorseRegistryId(string breedInitials, int number)
+        public static string GenerateHorseRegistryId(Breed breed, int number)
 
         {
             string paddedNumber = number.ToString("D5");
-            return breedInitials + paddedNumber;
+            return breed.RegistryInitials + paddedNumber;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Application.IPictureStorages;
+﻿using Domain.IPictureStorages;
 using System;
 using System.Collections.Generic;
 using System.Linq;

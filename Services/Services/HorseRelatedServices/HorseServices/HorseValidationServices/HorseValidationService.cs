@@ -1,7 +1,6 @@
 ﻿using Application.RepositoryInterfaces;
 using Application.RepositoryInterfaces.IHorseRelatedRepositories.IHorseRepository;
 using Application.ServiceInterfaces.IHorseServices.IHorseValidationServices;
-using Application.ServiceInterfaces.IUserServices.IUserValidationServices;
 using Domain.Models;
 using System;
 using System.Collections.Generic;

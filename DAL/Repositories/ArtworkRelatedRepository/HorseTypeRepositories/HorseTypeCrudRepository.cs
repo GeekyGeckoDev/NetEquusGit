@@ -1,4 +1,4 @@
-﻿using Application.RepositoryInterfaces.IArtworkRelatedRepository.IHorseTypeRepository;
+﻿using Application.RepositoryInterfaces;
 using Domain.Models;
 using System;
 using System.Collections.Generic;

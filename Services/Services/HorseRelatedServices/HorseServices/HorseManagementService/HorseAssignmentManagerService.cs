@@ -1,7 +1,4 @@
-﻿using Application.Services.HorseServices.HorseValidationServices;
-using Application.Services.HorseServices.HorseBoardingServices;
-using Application.Services.HorseServices.HorseOwnershipServices;
-using Application.ProviderInterfaces;
+﻿using Application.ProviderInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

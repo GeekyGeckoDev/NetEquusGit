@@ -17,7 +17,7 @@ public  class HorseType
 
     public int HorseTypeSubmissionId { get; set; }
 
-    public int BreedId { get; set; }
+    public string BreedId { get; set; }
 
     public int TypeCategory { get; set; }
 

@@ -45,7 +45,7 @@ public class HorseTypeSubmission
     [Required]
     public bool IsHorse { get; private set; } // Not sure what else this would be?
 
-    public int HorsePictureId { get; set; };
+    public int HorsePictureId { get; set; }
 
     public virtual HorsePicture HorsePicture { get; set; }
 

@@ -17,6 +17,8 @@ namespace Domain.Models;
         [Required]
         public string CompetitionName { get; set; }
 
+        public int CompetitionCoolDown { get; set; }
+
         public DateTime Date { get; set; }
 
         public DateTime EntryOpenAt { get; set; }

@@ -1,9 +1,6 @@
 using UiNetEquus.Components;
 using Microsoft.Extensions.DependencyInjection;
-using DAL;
 using Domain.Models;
-using Application.ServiceInterfaces;
-using Application.Services;
 using Application.RepositoryInterfaces;
 using Infrastructure.Repositories.UserRelatedRepositories.UserRepositories;
 using Application.Services.UserRelatedServices.UserServices.UserCrudServices;

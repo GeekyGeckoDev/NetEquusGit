@@ -4,13 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Models.Horses;
+using Domain.Models;
 
-namespace Domain.DomainServices.HorseBreedingService
+namespace Domain.DomainServices.HorseInitializationServices.HorseBreedingService
 {
     public class ConformationService
     {
-        public static ConformationAttributes GenerateConformationFromParents(ConformationAttributes dam, ConformationAttributes sire, ConformationWeight conformationWeights)
+        public static ConformationAttributes GenerateConformationFromParents(Horse damHorse, Horse sireHorse, ConformationWeight conformationWeights)
         {
+            var dam = damHorse.ConfPerfTempAttributes.ConformationAttributes;
+            var sire = sireHorse.ConfPerfTempAttributes.ConformationAttributes;
+
             var foal = new ConformationAttributes();
 
             Random rnd = new Random();
@@ -24,7 +29,7 @@ namespace Domain.DomainServices.HorseBreedingService
             for (int i = 0; i < damMovement.Length; i++)
             {
 
-                foalMovement[i] = (damMovement[i] * 0.4) + (sireMovement[i] * 0.6) * mWeights[i]
+                foalMovement[i] = damMovement[i] * 0.4 + sireMovement[i] * 0.6 * mWeights[i]
                                   + (rnd.NextDouble() * 0.4 - 0.2); // adds random offset between -0.2 and +0.2
             }
 
@@ -60,8 +65,8 @@ namespace Domain.DomainServices.HorseBreedingService
 
             for (int i = 0; i < damType.Length; i++)
             {
-                foalType[i] = (damType[i] * 0.6 + (sireType[i] * 0.4) * tWeights[i]
-                    + (rnd.NextDouble() * 0.4 - 0.2));
+                foalType[i] = damType[i] * 0.6 + sireType[i] * 0.4 * tWeights[i]
+                    + (rnd.NextDouble() * 0.4 - 0.2);
             }
 
             int tCountBelow5 = foalType.Count(t => t > 5);

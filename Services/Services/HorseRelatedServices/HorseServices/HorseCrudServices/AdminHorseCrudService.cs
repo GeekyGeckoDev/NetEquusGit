@@ -20,7 +20,6 @@ namespace Application.Services.HorseRelatedServices.HorseServices.HorseCrudServi
             var newHorse = new Horse
             {
                 GuidHorseId = Guid.NewGuid(),
-                HorseRegistryId = "blob" //Make method for generating Id's),
 
 
 

@@ -31,17 +31,16 @@ namespace Application.Services.ArtworkRelatedServices.HorseTypeSubmisionServices
 
             var horseTypeSubmission = new HorseTypeSubmission
             {
-                SubmittedByUserId = userId,
-                PictureRef = "someValue" // you’ll need to fill in required fields
+                SubmittedByUserId = userId
             };
 
-            if (string.IsNullOrWhiteSpace(horseTypeSubmission.PictureRef))
-                throw new ValidationException("Picture reference is required.");
+            //    if (string.IsNullOrWhiteSpace(horseTypeSubmission.PictureRef))
+            //        throw new ValidationException("Picture reference is required.");
 
             return await _horseTypeSubmissionCrudService
                 .CreateHorseTypeSubmissionAsync(horseTypeSubmission);
 
-            
+
         }
 
         public async Task<HorseTypeSubmission> GetAndValidateHorseTypeSubmissionAsync (int horseTypeSubmissionId, HorseTypeSubmission horseTypeSubmission)

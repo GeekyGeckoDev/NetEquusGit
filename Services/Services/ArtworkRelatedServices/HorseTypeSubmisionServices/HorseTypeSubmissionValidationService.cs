@@ -1,5 +1,4 @@
 ﻿using Application.RepositoryInterfaces;
-using Application.RepositoryInterfaces.IArtworkRelatedRepository.IHorseTypeRepository;
 using Application.RepositoryInterfaces.IArtworkRelatedRepository.IHorseTypeSubmissionRepositories;
 using Domain.Models;
 using System;

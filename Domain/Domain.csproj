@@ -16,6 +16,8 @@
 
   <ItemGroup>
     <Folder Include="DomainServices\HorseInitializationServices\ManualHorseInitializeService\" />
+    <Folder Include="DomainServices\RuleBookServices\EstateRuleServices\" />
+    <Folder Include="DomainServices\RuleBookServices\UserRuleServices\" />
   </ItemGroup>
 
 </Project>

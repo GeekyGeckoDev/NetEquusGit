@@ -9,7 +9,7 @@ namespace Application.ServiceInterfaces.IHorseServices.IHorseManagementServices
 {
     public interface IHorseManagerService
     {
-        Task<Guid> CreateValidateAssignHorseAsync(Horse horse, Guid userId, Guid estateId, bool isFoaling, bool isPermanentResidence);
+        Task<Guid> CreateValidateAssignHorseAsync(Horse horse,Guid guidHorseId, Guid userId, Guid estateId, bool isFoaling, bool isPermanentResidence, int horsetypeId);
 
         Task<Horse?> ValidateAndGetHorseById(Guid guidHorseId);
 

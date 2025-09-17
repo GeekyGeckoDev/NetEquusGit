@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Domain.Models.Enums;
 using Domain.Models;
 
-namespace Domain.DomainServices.RandomGenerators
+namespace Domain.DomainServices.HorseInitializationServices.RandomGenerators
 {
     public class RandomGenderService
     {

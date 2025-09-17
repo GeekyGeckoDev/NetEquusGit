@@ -238,14 +238,6 @@ public class NetEquusDbContext : DbContext
             .WithMany(g => g.AllowedDisciplines)
             .HasForeignKey(d => d.DisciplineGroupId);
 
-        modelBuilder.Entity<Foaling>(entity =>
-        {
-            entity.HasOne(d => d.Dam).WithMany(p => p.FoalingDams)
-            .OnDelete(DeleteBehavior.ClientSetNull);
-
-            entity.HasOne(d => d.Sire).WithMany(p => p.FoalingSires)
-            .OnDelete(DeleteBehavior.ClientSetNull);
-        });
 
         modelBuilder.Entity<FoundationPair>(entity =>
         {
@@ -293,12 +285,9 @@ public class NetEquusDbContext : DbContext
                 perf.Property(p => p.Agility);
                 perf.Property(p => p.Endurance);
                 perf.Property(p => p.Stride);
-                perf.Property(p => p.Rideability);
-                perf.Property(p => p.Temperament);
+                perf.Property(p => p.Trainability);
             });
-
-
-        });
+});
 
         modelBuilder.Entity<TemperamentInformation>()
     .HasOne<ConfPerfTempAttributes>() // no nav back

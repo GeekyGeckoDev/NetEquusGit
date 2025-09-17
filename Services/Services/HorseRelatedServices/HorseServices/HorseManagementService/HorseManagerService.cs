@@ -49,10 +49,10 @@ namespace Application.Services.HorseRelatedServices.HorseServices.HorseManagemen
             await _sharedHorseCrudService.UpdateHorseAsync(existingHorse, updatedHorse);
         }
 
-        public async Task<Guid>CreateValidateAssignHorseAsync(Horse horse, Guid userId, Guid estateId, bool isFoaling, bool isPermanentResidence, int horseTypeId)
+        public async Task<Guid>CreateValidateAssignHorseAsync(Horse horse, Guid HorseId, Guid userId, Guid estateId, bool isFoaling, bool isPermanentResidence, int horseTypeId)
 
         {
-            _horseTypeValidationService.ValidateAndLoadHorseTypeAsync(horseTypeId);
+            await _horseTypeValidationService.ValidateAndLoadHorseTypeAsync(horseTypeId);
 
              _horseValidationService.ValidateHorseData(horse, isFoaling);
             
@@ -64,7 +64,7 @@ namespace Application.Services.HorseRelatedServices.HorseServices.HorseManagemen
 
             await _horseAssignmentManagerService.AssignHorseToUserAndEstateAsync(DateTime.UtcNow, guidHorseId, userId, estateId, isPermanentResidence);
 
-            return guidHorseId;
+            return horse.GuidHorseId;
 
         }
 
